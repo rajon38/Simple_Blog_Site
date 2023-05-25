@@ -1,7 +1,7 @@
 const DataModel = require("../models/UserModel");
 const OTPModel = require("../models/OTPModel")
 
-const {UserCreateService} = require("../services/common/CreateService");
+const {CreateService} = require("../services/common/CreateService");
 const {UserUpdateService} = require("../services/users/UserUpdateService");
 const {UserDetailsService} = require("../services/users/UserDetailsService");
 const {UserLoginService} = require("../services/users/UserLoginService");
@@ -10,7 +10,7 @@ const {UserVerifyOtpService} = require("../services/users/UserVerifyOtpService")
 const {UserResetPassService} = require("../services/users/UserResetPassService");
 
 exports.Registration = async (req,res) => {
-    let Result = await UserCreateService(req,DataModel);
+    let Result = await CreateService(req,DataModel);
     res.status(200).json(Result);
 }
 

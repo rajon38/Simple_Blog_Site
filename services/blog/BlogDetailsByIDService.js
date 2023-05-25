@@ -4,11 +4,13 @@ exports.BlogDetailsByIDService = async (Request,DataModel) =>{
         let DetailsID=Request.params.id;
 
         const ObjectId = mongoose.Types.ObjectId;
+        const objectId = new ObjectId(DetailsID);
+
         let QueryObject={};
-        QueryObject['_id']=ObjectId(DetailsID);
+        QueryObject['_id']=objectId;
 
         let data = await DataModel.aggregate([{
-            $match:{_id: DetailsID}
+            $match:{_id: objectId}
         },
             {
                 $project: {
@@ -19,6 +21,7 @@ exports.BlogDetailsByIDService = async (Request,DataModel) =>{
                     date: 1
                 }
             }])
+        return {status: "success", data: data}
     }catch (e) {
         return {status: "fail", data: e.toString()}
     }

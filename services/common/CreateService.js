@@ -1,4 +1,4 @@
-exports.BlogCreateService = async (Request,DataModel)=>{
+exports.CreateService = async (Request,DataModel)=>{
     try {
         let PostBody = Request.body;
         let data = await DataModel.create(PostBody);
